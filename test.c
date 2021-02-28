@@ -18,5 +18,14 @@ int main(int argc, char** argv){
 	unsigned int blen = read_until_terminator(stdin, buf, 10, 'B');
 	printf("\nYou entered a string of length %u:\n%s\n",blen, buf);
 	free(buf);
+
+	FILE* f = fopen("README.MD", "r");
+	if(!f) return 1;
+	buf = NULL; buf = read_file_into_alloced_buffer(f);
+	if(buf){
+		printf("\nThe entire contents of README.MD are:\n%s\n~~~\n",buf);
+		free(buf);
+	}
+	if(f) fclose(f);
 	return 0;
 }

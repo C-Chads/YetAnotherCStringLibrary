@@ -2,8 +2,10 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+//Before we get on, "stringutil.h" is the most C-ish name for a source code file ever, amirite?
+
 #ifndef STRUTIL_ALLOC
-#define STRUTIL_ALLOC malloc
+#define STRUTIL_ALLOC(s) malloc(s)
 #endif
 
 //Strcat but with malloc.
@@ -28,4 +30,17 @@ static inline unsigned int read_until_terminator(FILE* f, char* buf, const unsig
 	}
 	buf[buflen-1] = '\0'; //READ_UNTIL_TERMINATOR ALWAYS RETURNS A VALID STRING!
 	return i;
+}
+
+
+static inline void* read_file_into_alloced_buffer(FILE* f){
+	int len; void* buf = NULL;
+	if(!f) return NULL;
+	fseek(f, 0, SEEK_END);
+	len = ftell(f);
+	fseek(f,0,SEEK_SET);
+	buf = STRUTIL_ALLOC(len);
+	if(!buf) return NULL;
+	fread(buf, 1, len, f);
+	return buf;
 }
