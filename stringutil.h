@@ -16,6 +16,13 @@ static inline char* strcatalloc(const char* s1, const char* s2){
 	return d;
 }
 
+static inline char* str_null_terminated_alloc(const char* in, unsigned int len){
+	char* d = malloc(len+1);
+	memcpy(d,in,len);
+	d[len] = '\0';
+	return d;
+}
+
 //Read file until terminator character is found.
 //Returns the number of characters copied.
 static inline unsigned int read_until_terminator(FILE* f, char* buf, const unsigned int buflen, char terminator){
@@ -33,14 +40,15 @@ static inline unsigned int read_until_terminator(FILE* f, char* buf, const unsig
 }
 
 
-static inline void* read_file_into_alloced_buffer(FILE* f){
-	int len; void* buf = NULL;
+static inline void* read_file_into_alloced_buffer(FILE* f, unsigned int* len){
+	void* buf = NULL;
 	if(!f) return NULL;
 	fseek(f, 0, SEEK_END);
-	len = ftell(f);
+	*len = ftell(f);
 	fseek(f,0,SEEK_SET);
-	buf = STRUTIL_ALLOC(len);
+	buf = STRUTIL_ALLOC(*len + 1);
 	if(!buf) return NULL;
-	fread(buf, 1, len, f);
+	fread(buf, 1, *len, f);
+	((char*)buf)[*len] = '\0';
 	return buf;
 }

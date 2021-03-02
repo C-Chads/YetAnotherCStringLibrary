@@ -21,7 +21,8 @@ int main(int argc, char** argv){
 
 	FILE* f = fopen("README.MD", "r");
 	if(!f) return 1;
-	buf = NULL; buf = read_file_into_alloced_buffer(f);
+	unsigned int len;
+	buf = NULL; buf = read_file_into_alloced_buffer(f, &len);
 	if(buf){
 		printf("\nThe entire contents of README.MD are:\n%s\n~~~\n",buf);
 		free(buf);
