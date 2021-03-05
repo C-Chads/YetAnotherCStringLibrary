@@ -12,14 +12,14 @@ int main(int argc, char** argv){
 		printf("Arguments 1 and 2 combined together are %s", one_and_two);
 	if(one_and_two) free(one_and_two);
 
-	puts("\nReading from stdin until terminator B or 10 characters...\n");
+	puts("\nReading from stdin until terminator B or 9 characters...\n");
 	char* buf = malloc(10);
 	if(!buf)return 1;
 	unsigned int blen = read_until_terminator(stdin, buf, 10, 'B');
 	printf("\nYou entered a string of length %u:\n%s\n",blen, buf);
 	free(buf);
 
-	FILE* f = fopen("README.MD", "r");
+	FILE* f = fopen("README.MD", "rb");
 	if(!f) return 1;
 	unsigned int len;
 	buf = NULL; buf = read_file_into_alloced_buffer(f, &len);
