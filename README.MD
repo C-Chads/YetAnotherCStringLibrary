@@ -18,7 +18,7 @@ read_file_into_alloced_buffer (Read an entire file into an allocated buffer.)
 
 if you have a custom memory allocator, then 
 ```c
-#define STRUTIL_ALLOC my_memory_allocator
-#define STRUTIL_REALLOC my_memory_realloc
-#define STRUTIL_FREE my_free
+#define STRUTIL_ALLOC(s) my_memory_allocator(s)
+#define STRUTIL_REALLOC(s,t) my_memory_realloc(s,t)
+#define STRUTIL_FREE my_free(s)
 ```
