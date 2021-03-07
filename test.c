@@ -31,9 +31,13 @@ int main(int argc, char** argv){
 
 	//Substring search.
 	const char* text = "Oh, what a mighty fine day it is!";
-	int pos = strfind(text, "mighty"); //-1 means it could not find it
+	int pos = strfind(text, "mighty"); 
 	int pos2 = strfind(text, "Mighty"); //-1 means it could not find it
+	int pos3 = strfind(text, ""); 
 	printf("\n\"mighty\" is at %d\n", pos);
+	printf("\nwhich is:%s\n", text+pos);
 	printf("\"Mighty\" is at %d\n", pos2);
+	printf("\"Oh,\" is at %d\n", strfind(text, "Oh,"));
+	printf("\"\" is at %d\n", pos3);
 	return 0;
 }
