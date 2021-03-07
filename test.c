@@ -15,7 +15,7 @@ int main(int argc, char** argv){
 	puts("\nReading from stdin until terminator B or 9 characters...\n");
 	char* buf = malloc(10);
 	if(!buf)return 1;
-	unsigned int blen = read_until_terminator(stdin, buf, 10, 'B'); fgetc(stdin); //Used to handle erroneous '\n grabs.'
+	unsigned int blen = 0; blen = read_until_terminator(stdin, buf, 10, 'B'); fgetc(stdin); //Used to handle erroneous '\n grabs.'
 	printf("\nYou entered a string of length %u:\n%s\n",blen, buf);
 	free(buf); buf = NULL;
 	//Test read_until_terminator_alloc
