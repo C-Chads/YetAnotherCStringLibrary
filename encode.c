@@ -27,7 +27,7 @@ const unsigned int ntokenc = 6;
 
 
 int main(int argc, char** argv){
-	unsigned int l;
+	unsigned long long l;
 	if(argc < 2){
 		char* b = read_until_terminator_alloced(stdin, &l, '\n', 1024);
 		char* q = strdecodealloc(b);
