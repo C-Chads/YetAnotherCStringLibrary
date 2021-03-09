@@ -1,6 +1,6 @@
 # Another string utility library for C
 
-CC0 implementation of some basic string/file utilities...
+CC0 implementation of some basic string/file utilities which I find infinitely useful/
 
 Never write them again. Please. Just stop.
 
@@ -22,3 +22,16 @@ if you have a custom memory allocator, then
 #define STRUTIL_REALLOC(s,t) my_memory_realloc(s,t)
 #define STRUTIL_FREE my_free(s)
 ```
+
+### BONUS CONTENT!
+
+This library comes with bOnUs CoNtEnT! you also get a free text compression scheme.
+This is what it looks like:
+```c
+\~t3~THEfis7~FISHINGfl11~FLOUNDERING\~t ~fis BOAT IS ~fl.\\!\~^
+```
+The first two characters define the characters to be used for "escape" and "token"
+
+Then comes a list of token definitions, ~ used to denote "tokenmark" (as in example) and \ used to indicate "escape"
+~<name><length>~<tokendefinition>
+
