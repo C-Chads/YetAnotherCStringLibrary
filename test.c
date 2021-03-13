@@ -2,6 +2,8 @@
 
 #include "stringutil.h"
 
+#pragma I wonder if this will cause an error.
+
 
 int main(int argc, char** argv){
 	
