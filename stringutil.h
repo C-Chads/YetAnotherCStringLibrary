@@ -1,3 +1,6 @@
+#ifndef STRUTIL_H
+#define STRUTIL_H
+
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
@@ -23,15 +26,6 @@
 #define strcatafb strcatallocfb
 #endif
 
-#ifndef loop
-//Loop without errors!
-#define loop(v, e)\
-for(unsigned long long v = 0, __internal_##v = 0; __internal_##v < e; __internal_##v++, v = __internal_##v)
-
-#define loople(v, e)\
-for(unsigned long long v = 0, __internal_##v = 0; __internal_##v <= e; __internal_##v++, v = __internal_##v)
-
-#endif
 //Strcat but with malloc.
 static inline char* strcatalloc(const char* s1, const char* s2){
 	char* d = NULL; d = STRUTIL_ALLOC(strlen(s1) + strlen(s2) + 1);
@@ -342,3 +336,5 @@ static inline char* strdecodealloc(char* inbuf){
 	//if(toklens)STRUTIL_FREE(toklens);
 	return out;
 }
+//STRUTIL_H 
+#endif
