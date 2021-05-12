@@ -50,6 +50,7 @@ typedef struct strll{
 - right is the following node in the AST.
 - child is the owned set of right-progressing nodes in the AST.
 	- You might decide for instance that a function declaration has an AST that looks like this
+```
 		-'int'
 			-'myfunc'
 				-'('
@@ -66,7 +67,7 @@ typedef struct strll{
 						-left:'a' right:'b'
 					-';'
 			-'}'
-					
+```
 - left is the owned set of left-progressing nodes in the AST.
 - text is the literal text as a result of tokenization that you get back from `tokenize`
 - identification is for your use to identify nodes in the AST.
