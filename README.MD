@@ -35,7 +35,42 @@ you can tokenize text into a linked list using `tokenize`.
 
 - tokenize assumes that the text is allocated and can be free'd with STRUTIL_FREE.
 - tokenize will free your text.
+- tokenize will give you a `strll` (string linked list) which is a linked list of structs that looks like this:
 
+```c
+typedef struct strll{
+	char* text;
+	unsigned long identification;
+	void* data;
+	struct strll* right;
+	struct strll* child;
+	struct strll* left;
+}strll;
+```
+- right is the following node in the AST.
+- child is the owned set of right-progressing nodes in the AST.
+	- You might decide for instance that a function declaration has an AST that looks like this
+		-'int'
+			-'myfunc'
+				-'('
+					-'int'
+						-'a'
+					-','
+					-'int'
+						-'b'
+					-','
+				-')'
+			-'{'
+				-'return'
+					-'+'
+						-left:'a' right:'b'
+					-';'
+			-'}'
+					
+- left is the owned set of left-progressing nodes in the AST.
+- text is the literal text as a result of tokenization that you get back from `tokenize`
+- identification is for your use to identify nodes in the AST.
+- data is for your use to organize compiled code.
 
 
 you also get a free text compression scheme.
