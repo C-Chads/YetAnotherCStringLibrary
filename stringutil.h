@@ -387,7 +387,7 @@ static strll tokenize(char* alloced_text, const char* token){
 		free(alloced_text);
 		alloced_text = temp;
 		current_token_location = strfind(alloced_text, token);
-		current->right = malloc(sizeof(strll));
+		current->right = calloc(1, sizeof(strll));
 		current = current->right;
 	}
 	return result;
