@@ -383,7 +383,6 @@ static strll tokenize(char* alloced_text, const char* token){
 	while(current_token_location > -1){
 		char* temp = strcatalloc(alloced_text+ current_token_location + len_token, "");
 		current->text = str_null_terminated_alloc(alloced_text,current_token_location);
-		printf("TOKEN FOUND: '%s'", current->text);
 		free(alloced_text);
 		alloced_text = temp;
 		current_token_location = strfind(alloced_text, token);
