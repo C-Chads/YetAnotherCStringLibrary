@@ -121,6 +121,9 @@ static unsigned long read_until_terminator(FILE* f, char* buf, const unsigned lo
 }
 
 
+
+
+
 static char* read_until_terminator_alloced(FILE* f, unsigned long* lenout, char terminator, unsigned long initsize){
 	char c;
 	char* buf;
@@ -342,6 +345,52 @@ static char* strdecodealloc(char* inbuf){
 	}
 
 	return out;
+}
+
+
+
+static char* str_repl_alloc(char* text, char* subtext, char* replacement){
+	long bruh; char* result = NULL;
+	bruh = strfind(text, subtext);
+	if(bruh == -1) return (strcatalloc("", text)); /*This is already proper.*/
+	result = str_null_terminated_alloc(text, bruh);
+	result = strcatallocf1(result, replacement);
+	result = strcatallocf1(result, text+bruh+strlen(subtext));
+	return result;
+}
+
+static char* str_repl_allocf(char* text, char* subtext, char* replacement){
+	char * result = str_repl_alloc(text, subtext, replacement);
+	free(text);
+	return result;
+}
+
+typedef struct strll{
+	char* text;
+	unsigned long identification;
+	struct strll* right;
+	struct strll* child;
+	struct strll* left;
+}strll;
+
+static strll tokenize(char* alloced_text, const char* token){
+	strll result = {0}; strll* current;
+	long current_token_location;
+	long len_token;
+	current = &result;
+	len_token = strlen(token);
+	current_token_location = strfind(alloced_text, token);
+	while(current_token_location > -1){
+		char* temp = strcatalloc(alloced_text+ current_token_location + len_token, "");
+		current->text = str_null_terminated_alloc(alloced_text,current_token_location);
+		printf("TOKEN FOUND: '%s'", current->text);
+		free(alloced_text);
+		alloced_text = temp;
+		current_token_location = strfind(alloced_text, token);
+		current->right = malloc(sizeof(strll));
+		current = current->right;
+	}
+	return result;
 }
 
 #endif
