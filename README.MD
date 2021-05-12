@@ -25,7 +25,20 @@ if you have a custom memory allocator, then
 
 ### BONUS CONTENT!
 
-This library comes with bOnUs CoNtEnT! you also get a free text compression scheme.
+This library comes with bOnUs CoNtEnT! 
+
+## A simple token-based parser ready for compiler authors.
+
+Want to write a simple compiler? Want to put it in the public domain?
+
+you can tokenize text into a linked list using `tokenize`.
+
+- tokenize assumes that the text is allocated and can be free'd with STRUTIL_FREE.
+- tokenize will free your text.
+
+
+
+you also get a free text compression scheme.
 This is what it looks like:
 ```c
 \~t3~THEfis7~FISHINGfl11~FLOUNDERING\~t ~fis BOAT IS ~fl.\\!\~^
