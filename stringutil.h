@@ -526,11 +526,9 @@ static strll* parse_matched(strll* current_node, const char* tl, const char* tr)
 			}
 			if(current_tl_location != -1 &&
 			current_tl_location < current_tr_location){
-				printf("<DBG> incrementing counter, it is now %ld. Text: %s\n", counter, metaproc);
 				off += current_tl_location + len_tl;
 				metaproc += current_tl_location + len_tl; counter++;
 			} else {
-				printf("<DBG> decrementing counter, it is now %ld. Text: %s\n", counter, metaproc);
 				metaproc += current_tr_location + len_tr; counter--;
 				off += current_tr_location + len_tr;
 			}
@@ -540,12 +538,10 @@ static strll* parse_matched(strll* current_node, const char* tl, const char* tr)
 			exit(1);
 		}
 		current_node->child->text = str_null_terminated_alloc(begin, off - len_tr);
-		printf("\nencapsulated text is %s\n",current_node->child->text );
 		{
 			char* text_old = current_node->text;
 			current_node->text = str_null_terminated_alloc(text_old, start_tl_location);
 			
-			printf("\npre text is %s\n",current_node->text);
 
 			/*Grab the post-text.*/
 			current_node->right->text = strcatalloc(begin + off, "");
