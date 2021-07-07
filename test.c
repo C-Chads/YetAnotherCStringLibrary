@@ -47,12 +47,10 @@ int main(int argc, char** argv){
 	long pos = strfind(text, "mighty"); 
 	long pos2 = strfind(text, "Mighty"); //-1 means it could not find it
 	long pos4 = strfind(text, "ccars");
-	long pos3 = strfind(text, ""); 
 	printf("\n\"mighty\" is at %ld \n", pos);
 	printf("\nwhich is:%s\n", text+pos);
 	printf("\"Mighty\" is at %ld \n", pos2);
 	printf("\"Oh,\" is at %ld\n", strfind(text, "Oh,"));
-	printf("\"\" is at %ld\n", pos3);
 	printf("\"ccars\" is at %ld\n", pos4);
 	printf("\nwhich is:%s\n", text+pos4);
 	return 0;
