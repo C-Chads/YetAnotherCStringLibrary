@@ -1,6 +1,6 @@
 #!/bin/bash
 IFS=$'\n' FILES=$(find .. -name "stringutil.h")
-ME="../CStringUtils/stringutil.h"
+ME="../stringutil/stringutil.h"
 for filename in $FILES
 do
  if [[ "$filename" != "$ME" ]]; then
