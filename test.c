@@ -2,6 +2,10 @@
 
 #include "stringutil.h"
 
+#ifndef NULL
+#define NULL ((void*)0)
+#endif 
+
 #pragma I wonder if this will cause an error.
 
 
